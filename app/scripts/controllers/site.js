@@ -1,5 +1,15 @@
 'use strict';
-
+/* ToDo
+** Eventually Remove this Site
+** Add a Feature for Users to Submit Sites they 
+** Don't find. 
+** Also implement some kind of verification
+** Maybe check if it is an actual site?
+** 
+** Additional Feature:
+** Figure out out how to Grab Images or Icons
+** For each site
+*/
 angular.module('webTntApp')
   .controller('SiteCtrl',function ($scope, $http, $location, Sites,Auth) {
       var user = Auth.currentUser();
