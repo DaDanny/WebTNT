@@ -20,12 +20,24 @@ angular.module('webTntApp')
                 });
             });
         };
+      /* To Do
+      ** Also take in the current UserID
+      ** Go into Both Databases
+      ** Increment Site Followers by One
+      ** Add site to User's Followed Sites Array
+      */
       $scope.follow = function(site){
           Sites.follow(site._id)
             .success(function(data){
               $scope.sites=data;
             });
         };
+      /* To Do
+      ** Also take in current UserID
+      ** Go into User + Site DB's
+      ** Decrement Site Followers by One
+      ** Remove site from User's Followed Sites Array
+      */
       $scope.unfollow = function(site){
           Sites.unfollow(site._id)
             .success(function(data){
