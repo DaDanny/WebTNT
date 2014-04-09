@@ -15,7 +15,7 @@ angular.module('webTntApp')
           password: $scope.user.password
         })
         .then( function() {
-          // Account created, redirect to home
+          // Account created, redirect to profile page
           $location.path('/profile');
         })
         .catch( function(err) {
