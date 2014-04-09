@@ -1,15 +1,18 @@
 
 <div ng-include="'partials/navbar.html'"></div>
-
+<h1>Hello, <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
+<br>
 <p>This is the site view.</p>
 
 <div class="row marketing">
 	<h3>Sites of App:</h3>
-  <div ng-repeat="site in sites">
+  <div ng-repeat="site in sites | orderBy:'followers':true">
       <h5>Site: {{site.site}}</h5>
       <p>URL: {{site.siteURL}}</p>
-      <p>ID: {{site._id}}</p>
+      <p>Followers: {{site.followers}}</p>
       <button type = "submit" class= "btn btn-default" ng-click="deleteSite(site)">Delete Site</button>
+      <button type = "submit" class = "btn btn-default" ng-click="follow(site)">Follow</button>
+      <button type = "submit" class = "btn btn-default" ng-click = "unfollow(site)">Unfollow</button>
       <br>
   </div>
 </div>
@@ -34,3 +37,5 @@
 			</div>
 		</div>
 	</form>
+
+

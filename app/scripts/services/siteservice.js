@@ -2,9 +2,9 @@
 
 angular.module('webTntApp')
   .factory('Sites', function($http) {
-	var siteURL = '';
+	//var siteURL = '';
 	var site = '';
-	var data = '';
+	//var data = '';
 	return{
 			get : function(){
 				return $http.get('/api/sites');
@@ -16,6 +16,7 @@ angular.module('webTntApp')
 					'siteURL':siteURL,
 					'site':Site
 				};
+				//Turn our Data into a JSON String
 				var jdata = JSON.stringify(formData);
 				var promise = $http({
 					method: method,
@@ -39,6 +40,13 @@ angular.module('webTntApp')
 			},
 			delete : function(id){
 				return $http.delete('/api/sites/'+id);
+			},
+
+			follow : function(id){
+				return $http.post('/api/sites/follow/'+id);
+			},
+			unfollow : function(id){
+				return $http.post('/api/sites/unfollow/'+id);
 			}
 		};
 });

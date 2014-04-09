@@ -42,7 +42,8 @@ angular.module('webTntApp', [
       .when('/site', {
         templateUrl: 'partials/site',
         controller: 'SiteCtrl',
-        service: 'Sites'
+        service: 'Sites',
+        authenticate: true
       })
       .otherwise({
         redirectTo: '/'
