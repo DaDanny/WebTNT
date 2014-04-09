@@ -8,6 +8,9 @@ angular.module('webTntApp')
     }, {
       'title': 'About',
       'link': '/about'
+    },{
+      'title':'Sites',
+      'link': '/site'
     }
     ];
     

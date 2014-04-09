@@ -40,7 +40,7 @@
 <h1>Your sites</h1>
 
 
-<div ng-controller="ModalDemoCtrl">
+<div ng-controller="ModalCtrl">
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
             <h3> Im a modal!</h3>
@@ -53,6 +53,16 @@
             </ul>
             Selected: <b>{{ selected.item }}</b>
         </div>
+
+        <div>
+          <h4>Checkbox</h4>
+            <div class="btn-group" >
+                <button type="button" class="btn btn-primary" ng-repeat="site in sites" btn-checkbox ng-model="site.checkModel">{{site.URL}}</button>
+
+              
+            </div>
+        </div>
+
         <div class="modal-footer">
             <button class="btn btn-primary" ng-click="ok()">OK</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
@@ -61,9 +71,12 @@
 
     <button class="btn btn-default" ng-click="open()">Open me!</button>
     <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+
+
 </div>
 
-
+<br><br>
+<!--
 <div ng-controller="AccordionDemoCtrl">
   <label class="checkbox">
     <input type="checkbox" ng-model="oneAtATime">
@@ -90,4 +103,4 @@
     </accordion-group>
   </accordion>
 </div>
-
+-->

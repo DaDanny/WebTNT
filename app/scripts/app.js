@@ -5,7 +5,8 @@ angular.module('webTntApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'MyModal.controllers'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
@@ -37,6 +38,11 @@ angular.module('webTntApp', [
       .when('/about', {
         templateUrl: 'partials/about',
         controller: 'AboutCtrl'
+      })
+      .when('/site', {
+        templateUrl: 'partials/site',
+        controller: 'SiteCtrl',
+        service: 'Sites'
       })
       .otherwise({
         redirectTo: '/'

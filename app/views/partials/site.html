@@ -1,0 +1,36 @@
+
+<div ng-include="'partials/navbar.html'"></div>
+
+<p>This is the site view.</p>
+
+<div class="row marketing">
+	<h3>Sites of App:</h3>
+  <div ng-repeat="site in sites">
+      <h5>Site: {{site.site}}</h5>
+      <p>URL: {{site.siteURL}}</p>
+      <p>ID: {{site._id}}</p>
+      <button type = "submit" class= "btn btn-default" ng-click="deleteSite(site)">Delete Site</button>
+      <br>
+  </div>
+</div>
+
+<p>Submit a new Site</p>
+<form class="form-horizontal col-md-6" role="form" data-ng-submit="createSite()">
+		<div class="form-group">
+			<label for="siteURL" class="col-md-2 control-label">URL</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" data-ng-model="siteURL" id="title" placeholder="URL" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="site" class="col-md-2 control-label">Site</label>
+			<div class="col-md-10">
+				<input type="site" class="form-control" data-ng-model="site" id="site" placeholder="Site" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<button type="submit" class="btn btn-default">Submit</button>
+			</div>
+		</div>
+	</form>
