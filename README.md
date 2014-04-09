@@ -33,6 +33,9 @@ All these things and more lay within WebTNT, so what are you still waiting for, 
 * Submitting Content
 * Search for Sites
 * Make it look sexy!
+* Feature for Users to Add Sites they don't find
+* Anoymous Browsing so people don't have to register for site
+* Stylize Each Page for Each site
 
 
 ### Future Ideas
