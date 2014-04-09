@@ -1,7 +1,7 @@
 # Web Tips and Tricks
 ## Aka WebTNT
 
-Website created by Danny Francken.
+**Website created by Danny Francken.**
 
 Ever have trouble understanding how to use the in's and out's of a new page?
 
@@ -27,6 +27,7 @@ All these things and more lay within WebTNT, so what are you still waiting for, 
 
 * ~~Able to post, get, delete and update Sites~~
 * Follow/Unfollow Sites for Particular User
+* Prevent Followers from Going to Negative!
 * User Profiles
 * Homepage
 * Submitting Content
