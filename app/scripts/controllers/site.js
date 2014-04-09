@@ -1,5 +1,5 @@
 'use strict';
-/* ToDo
+/* To Do
 ** Eventually Remove this Site
 ** Add a Feature for Users to Submit Sites they 
 ** Don't find. 
