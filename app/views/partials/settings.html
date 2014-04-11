@@ -43,12 +43,18 @@
 <div ng-controller="ModalCtrl">
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
-            <h3> Im a modal!</h3>
+            <h2>Sites</h2>
         </div>
         <div class="modal-body">
             <ul>
                 <li ng-repeat="item in items">
                     <a ng-click="selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+
+            <ul>
+                <li ng-repeat="site in sites">
+                    {{ site.siteURL }}
                 </li>
             </ul>
             Selected: <b>{{ selected.item }}</b>
@@ -57,7 +63,7 @@
         <div>
           <h4>Checkbox</h4>
             <div class="btn-group" >
-                <button type="button" class="btn btn-primary" ng-repeat="site in sites" btn-checkbox ng-model="site.checkModel">{{site.URL}}</button>
+                <button type="button" class="btn btn-primary" ng-repeat="site in sites" btn-checkbox ng-model="site.checkModel">{{site.siteURL}}</button>
 
               
             </div>

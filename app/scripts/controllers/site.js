@@ -9,14 +9,21 @@
 ** Additional Feature:
 ** Figure out out how to Grab Images or Icons
 ** For each site
+**
+**
+** When a person clicks the follow button
+** We need to change it to Unfollow,
+** Post the site to their FollowedSites Array
+** Add UserId to Site Followers
 */
 angular.module('webTntApp')
   .controller('SiteCtrl',function ($scope, $http, $location, Sites,Auth) {
       var user = Auth.currentUser();
       Sites.get()
         .success(function(data){
-          console.log(user.email);
           $scope.sites = data;
+          $scope.userId = user._id;
+          console.log($scope.userId);
         });
 
       $scope.createSite = function(){
@@ -37,9 +44,14 @@ angular.module('webTntApp')
       ** Add site to User's Followed Sites Array
       */
       $scope.follow = function(site){
-          Sites.follow(site._id)
-            .success(function(data){
-              $scope.sites=data;
+          Sites.follow(site._id,$scope.userId)
+            .then(function(promise){
+              $scope.siteId = promise.siteId();
+              $scope.userId = promise.userId();
+              Sites.get()
+                .success(function(data){
+                  $scope.sites = data;
+                });
             });
         };
       /* To Do

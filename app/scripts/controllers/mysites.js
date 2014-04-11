@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('MyModal.controllers', [])
-  .controller('ModalCtrl', [ '$scope', '$modal', '$log', function ($scope, $modal, $log) {
+  .controller('ModalCtrl', [ '$scope', '$modal', '$log', 'Sites', function ($scope, $modal, $log, Sites) {
     $scope.items = ['item1', 'item2', 'item3'];
+
     $scope.open = function () {
         var modalInstance = $modal.open({
             templateUrl: 'myModalContent.html',
@@ -21,8 +22,12 @@ angular.module('MyModal.controllers', [])
       };
   }])
 
-  .controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', 'items', function ($scope, $modalInstance, items) {
+  .controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', 'items', 'Sites', function ($scope, $modalInstance, items, Sites) {
     $scope.items=items;
+    Sites.get()
+      .success(function(data){
+        $scope.sites = data;
+      });
     $scope.selected = {
         item: $scope.items[0]
       };
@@ -35,7 +40,8 @@ angular.module('MyModal.controllers', [])
         $modalInstance.dismiss('cancel');
       };
 
-    $scope.sites=[{
+      /*
+    $scope.sitesHard=[{
       'site':'Facebook',
       'checkModel':false,
       'URL':'Facebook.com'
@@ -45,4 +51,5 @@ angular.module('MyModal.controllers', [])
       'checkModel':true,
       'URL':'Github.com'
     }];
+    */
   }]);

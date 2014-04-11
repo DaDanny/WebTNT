@@ -24,7 +24,6 @@ angular.module('webTntApp', [
       })
       .when('/settings', {
         templateUrl: 'partials/settings',
-        //controller: 'SettingsCtrl','ModalDemoCtrl','ModalInstanceCtrl',
         authenticate: true
       })
       .when('/profile', {
@@ -42,8 +41,8 @@ angular.module('webTntApp', [
       .when('/site', {
         templateUrl: 'partials/site',
         controller: 'SiteCtrl',
-        service: 'Sites',
-        authenticate: true
+        authenticate:true
+        //service: 'Sites',
       })
       .otherwise({
         redirectTo: '/'
