@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('webTntApp')
-  .factory('Sites', function($http) {
+  .factory('Siteservice', function($http) {
 	//var siteURL = '';
 	var site = '';
 	//var data = '';

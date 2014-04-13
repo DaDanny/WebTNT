@@ -28,7 +28,8 @@ angular.module('webTntApp', [
       })
       .when('/profile', {
         templateUrl: 'partials/profile',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl',
+        authenticate: true
       })
       .when('/mySites', {
         templateUrl: 'partials/mysites',
@@ -42,7 +43,6 @@ angular.module('webTntApp', [
         templateUrl: 'partials/site',
         controller: 'SiteCtrl',
         authenticate:true
-        //service: 'Sites',
       })
       .otherwise({
         redirectTo: '/'
