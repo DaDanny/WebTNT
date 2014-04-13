@@ -30,3 +30,8 @@ The backend is laid out in 3 folders:
 
 ###More to come (April 12th at 0:22).
 
+
+## Sources
+### Reading on Angular Services and Resources. Could be a great read and save time on development process.
+http://kirkbushell.me/angular-js-using-ng-resource-in-a-more-restful-manner/
+http://www.bennadel.com/blog/2433-Using-RESTful-Controllers-In-An-AngularJS-Resource.htm
