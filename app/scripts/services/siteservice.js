@@ -49,6 +49,7 @@ angular.module('webTntApp')
 					'siteId': siteId,
 					'userId' : userId
 				};
+				console.log(userId);
 				var jdata = JSON.stringify(formData);
 				var promise = $http({
 					method:method,

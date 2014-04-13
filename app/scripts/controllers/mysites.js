@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MyModal.controllers', [])
-  .controller('ModalCtrl', [ '$scope', '$modal', '$log', 'Sites', function ($scope, $modal, $log, Siteservice) {
+  .controller('ModalCtrl', [ '$scope', '$modal', '$log', 'Siteservice', function ($scope, $modal, $log, Siteservice) {
     $scope.items = ['item1', 'item2', 'item3'];
 
     $scope.open = function () {
@@ -22,7 +22,7 @@ angular.module('MyModal.controllers', [])
       };
   }])
 
-  .controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', 'items', 'Sites', function ($scope, $modalInstance, items, Sites) {
+  .controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', 'items', 'Siteservice', function ($scope, $modalInstance, items, Siteservice) {
     $scope.items=items;
     Siteservice.get()
       .success(function(data){
