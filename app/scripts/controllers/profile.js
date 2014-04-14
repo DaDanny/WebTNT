@@ -15,17 +15,19 @@ angular.module('webTntApp')
 			.success(function(data){
 				$scope.sites = data;
 			});
+		
+		$scope.$watch($scope.user,function(){
+			console.log('changed');
+		},true);
+
 		//Load information about the current user
-		Profileservice.get(user)
-			.success(function(data){
-				$scope.user = data;
+		Profileservice.get()
+			.then(function(promise){
+				$scope.user = promise;
 				$scope.userId = user._id;
 				$scope.email = user.email;
 				$scope.userName = user.name;
 				$scope.followedSites = user.followedSites;
-				$scope.password = user.oldPassword;
-				console.log(user);
-				console.log($scope.userId);
 			});
 		//User wishes to follow site
 		/*

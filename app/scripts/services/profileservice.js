@@ -3,8 +3,18 @@
 angular.module('webTntApp')
   .factory('Profileservice', function($http) {
 	return{
-		get : function(user) {
-			return $http.get('/api/users/me');
+		get : function() {
+			var promise = $http({
+				method:'GET',
+				url:'/api/users/me'
+			})
+				.success(function(data,status,headers,config){
+					return data;
+				})
+				.error(function(data,status,headers,config){
+					return{'status':false};
+				});
+			return promise;
 		},
 		follow : function(userId,siteId){
 			var method = 'POST';
