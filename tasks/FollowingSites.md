@@ -2,13 +2,16 @@
 ## Following Sites
 
 ## Problem
-Right now, we are able to update to update the followers field on the appropriate site Collection but we are not able to add the siteID to the User's followedSites array.
-
-We need to have an array of FollowedSites for each users for their profiles. This will allow users to click follow on a site, the sites Followers field with incrememnt by one, and the users followedSites array will push the site_id to this array.
-
-When a user goes to their profile, we can pull all site Id's from their followedSites array and use this to show them what sites they are currently following.
 
 In future updates, we will use this ID to show them Tips for the sites they are following on their profile page.
+
+Now that we are able to add siteID's to the followedSites array for each user, we need to get information about each of these id's. 
+
+I made a function that can take in an iD from the followedSites array and it returns a JSON object of that site info. 
+
+I have the get request returning these siteInfos, but then it changes the scope of the site to the last one returned. I need to come up with a way that it either adds these site infos to an array with their information or I can access the information before the scope changes. 
+
+It sets the $scope.followedsites variable to the last site returned, which we don't want. We want the one returned, to get that information then use this information.
 
 
 ## Possible Solutions

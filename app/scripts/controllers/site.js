@@ -20,6 +20,7 @@ angular.module('webTntApp')
   .controller('SiteCtrl',function ($scope, $http, $location, Siteservice,Auth, Profileservice) {
       var user = Auth.currentUser();
 
+
       var sitePromise = function(){
         Siteservice.get()
           .then(function(data){

@@ -31,6 +31,16 @@ angular.module('webTntApp')
 
 		$scope.user = profilePromise();
 		$scope.sites = sitePromise();
+
+		$scope.getInfo = function(id){
+			Siteservice.getInfo(id)
+				.then(function(data){
+					console.log("data: " , data);
+					$scope.followedSites = data;
+				}, function(error){
+					$scope.site = 'failed';
+				});
+		};
 		
 		//User wishes to follow site
 		
