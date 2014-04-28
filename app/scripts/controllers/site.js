@@ -17,49 +17,39 @@
 ** Add UserId to Site Followers
 */
 angular.module('webTntApp')
-  .controller('SiteCtrl',function ($scope, $http, $location, Siteservice,Auth) {
+  .controller('SiteCtrl',function ($scope, $http, $location, Siteservice,Auth, Profileservice) {
       var user = Auth.currentUser();
-      Siteservice.get()
-        .success(function(data){
-          $scope.sites = data;
-          $scope.userId = user._id;
-          console.log($scope.userId);
-        });
 
+      var sitePromise = function(){
+        Siteservice.get()
+          .then(function(data){
+            $scope.sites = data;
+            $scope.userId = user._id;
+        });
+      };
+      
+      $scope.sites = sitePromise();
       $scope.createSite = function(){
           Siteservice.create($scope.siteURL, $scope.site)
             .then(function(promise){
               $scope.siteURL = promise.siteURL();
               $scope.site = promise.site();
-              Siteservice.get()
-                .success(function(data){
-                  $scope.sites = data;
-                });
+              sitePromise();
             });
         };
-      /* To Do
-      ** Also take in the current UserID
-      ** Go into Both Databases
-      ** Increment Site Followers by One
-      ** Add site to User's Followed Sites Array
-      */
       $scope.follow = function(site){
           Siteservice.follow(site._id,$scope.userId)
             .then(function(promise){
               $scope.siteId = promise.siteId();
               $scope.userId = promise.userId();
-              Siteservice.get()
-                .success(function(data){
-                  $scope.sites = data;
-                });
+              sitePromise();
+            });
+          Profileservice.follow(site._id,$scope.userId)
+            .then(function(promise){
+              $scope.siteId = promise.siteId();
+              $scope.userId = promise.userId();
             });
         };
-      /* To Do
-      ** Also take in current UserID
-      ** Go into User + Site DB's
-      ** Decrement Site Followers by One
-      ** Remove site from User's Followed Sites Array
-      */
       $scope.unfollow = function(site){
           Siteservice.unfollow(site._id)
             .success(function(data){
@@ -72,5 +62,10 @@ angular.module('webTntApp')
             .success(function(data){
                 $scope.sites = data;
               });
+          Profileservice.unfollow(site._id, $scope.userId)
+            .then(function(promise){
+              $scope.siteId = promise.siteId();
+              $scope.userId = promise.userId();
+            });
         };
     });

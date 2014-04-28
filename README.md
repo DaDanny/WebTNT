@@ -26,7 +26,7 @@ All these things and more lay within WebTNT, so what are you still waiting for, 
 ## To Do:
 
 * ~~Able to post, get, delete and update Sites~~
-* Follow/Unfollow Sites for Particular User
+* ~~Follow/Unfollow Sites for Particular User~~
 * Prevent Followers from Going to Negative!
 * User Profiles
 * Homepage

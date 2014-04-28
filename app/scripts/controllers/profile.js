@@ -10,37 +10,50 @@
 angular.module('webTntApp')
   .controller('ProfileCtrl', function ($scope, $http, Auth, Profileservice,Siteservice) {
 		var user = Auth.currentUser();
-		//Load all the Sites
-		Siteservice.get()
-			.success(function(data){
-				$scope.sites = data;
-			});
-		
-		$scope.$watch($scope.user,function(){
-			console.log('changed');
-		},true);
 
-		//Load information about the current user
-		Profileservice.get()
-			.then(function(promise){
-				$scope.user = promise;
-				$scope.userId = user._id;
-				$scope.email = user.email;
-				$scope.userName = user.name;
-				$scope.followedSites = user.followedSites;
-			});
-		//User wishes to follow site
-		/*
-		$scope.follow = function(site){
-			Profileservice.follow(site._id,$scope.userId)
-				.then(function(promise){
-					$scope.siteId = promise.siteId();
-					$scope.userId = promise.userId();
-					Profileservice.get(user)
-						.success(function(data){
-							$scope.user = data;
-						});
+		var sitePromise = function(){
+			Siteservice.get()
+				.then(function(data){
+					$scope.sites = data;
+				}, function(error){
+					$scope.sites = 'failed';
 				});
 		};
-		*/
+
+		var profilePromise = function(){
+			Profileservice.get()
+				.then(function(data){
+					$scope.user = data;
+				}, function(error){
+					$scope.user = 'failed';
+				});
+		};
+
+		$scope.user = profilePromise();
+		$scope.sites = sitePromise();
+		
+		//User wishes to follow site
+		
+		$scope.follow = function(site){
+			Profileservice.follow(site._id,user._id)
+				.then(function(promise){
+					profilePromise();
+				});
+			Siteservice.follow(site._id,user._id)
+        .then(function(promise){
+          sitePromise();
+        });
+		};
+		
+		//User wishes to Unfollow Site
+		$scope.unfollow = function(site){
+			Profileservice.unfollow(site._id, user._id)
+				.then(function(promise){
+					profilePromise();
+				});
+			Siteservice.unfollow(site._id, user._id)
+				.then(function(promise){
+					sitePromise();
+				});
+		};
   });

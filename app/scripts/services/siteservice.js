@@ -1,13 +1,23 @@
 'use strict';
 
 angular.module('webTntApp')
-  .factory('Siteservice', function($http) {
+  .factory('Siteservice', function($http, $q) {
 	//var siteURL = '';
 	var site = '';
 	//var data = '';
 	return{
 			get : function(){
-				return $http.get('/api/sites');
+				return $http.get('/api/sites')
+					.then(function(response){
+						if(typeof response.data === 'object'){
+							return response.data;
+						}
+						else{
+							return $q.reject(response.data);
+						}
+					}, function(response){
+							return $q.reject(response.data);
+					});
 			},
 			create : function(siteURL,Site){
 				var method = 'POST';
@@ -49,7 +59,6 @@ angular.module('webTntApp')
 					'siteId': siteId,
 					'userId' : userId
 				};
-				console.log(userId);
 				var jdata = JSON.stringify(formData);
 				var promise = $http({
 					method:method,

@@ -25,7 +25,7 @@ angular.module('MyModal.controllers', [])
   .controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', 'items', 'Siteservice', function ($scope, $modalInstance, items, Siteservice) {
     $scope.items=items;
     Siteservice.get()
-      .success(function(data){
+      .then(function(data){
         $scope.sites = data;
       });
     $scope.selected = {

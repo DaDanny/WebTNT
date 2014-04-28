@@ -3,11 +3,14 @@
 
 <h1>Hello, <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
 
-<p>UserID: {{userId}}</p>
-<p>UserName: {{userName}}</p>
-<p>Email: {{email}}</p>
-<p>FollowedSites: {{followedSites}}</p>
-<p>Password: {{password}} </p>
+<div class = "row marketing">
+    <h2>User Information</h2>
+    <p>UserID: {{user._id}}</p>
+    <p>UserName: {{user.name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>FollowedSites: {{user.followedSites}}</p>
+</div>
+
 
 <div class = "row marketing">
 	<h3>Sites</h3>
@@ -15,5 +18,6 @@
 		orderBy:'followers':true">
 		<h3>Site:{{site.site}}</h3>
 		<button type = "submit" class = "btn btn-default" ng-click="follow(site)">Follow Site</button>
+    <button type = "submit" class = "btn btn-danger" ng-click = "unfollow(site)">Unfollow Site</button>
 	</div>
 </div>
