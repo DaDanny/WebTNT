@@ -45,9 +45,9 @@ angular.module('webTntApp')
               $scope.userId = promise.userId();
               sitePromise();
             });
-          Profileservice.follow(site._id,$scope.userId)
+          Profileservice.follow(site,$scope.userId)
             .then(function(promise){
-              $scope.siteId = promise.siteId();
+              $scope.site = promise.site();
               $scope.userId = promise.userId();
             });
         };
@@ -56,6 +56,11 @@ angular.module('webTntApp')
             .success(function(data){
               $scope.sites=data;
             });
+          Profileservice.unfollow(site._id,$scope.userId)
+            .then(function(promise){
+              $scope.site = promise.site();
+              $scope.userId = promise.userId();
+            })
         };
 
       $scope.deleteSite = function(site){

@@ -81,8 +81,8 @@ angular.module('webTntApp')
 			},
 			unfollow : function(id){
 				return $http.post('/api/sites/unfollow/'+id);
-			},
-			getInfo : function(id){
+			}
+			/*getInfo : function(id){
 				return $http.get('/api/sites/'+id)
 					.then(function(response){
 						if(typeof response.data === 'object'){
@@ -94,7 +94,7 @@ angular.module('webTntApp')
 					}, function(response){
 							return $q.reject(response.data);
 					});
-			}
+			}*/
 		};
 });
 

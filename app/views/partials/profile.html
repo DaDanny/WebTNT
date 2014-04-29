@@ -13,12 +13,10 @@
 
 <div class = "row marketing">
   <h2>Your Followed Sites</h2>
-  <div ng-repeat = "site in user.followedSites" ng-init="siteInfo = getInfo(site)">
-    {{siteInfo.site}}
-    {{site.siteURL}}
-    {{site}}
-    {{followedSites}}
-    
+  <div ng-repeat = "site in user.followedSites">
+    <h3>SiteURL: {{site.siteURL}} </h3>
+    <h4>Site: {{site.site}}</h4>
+    <h1>Site Tips: {{site.tips}}<h1>
   </div>
 </div>
 

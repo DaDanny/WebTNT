@@ -16,11 +16,11 @@ angular.module('webTntApp')
 						return $q.reject(response.data);
 				});
 		},
-		follow : function(siteId, userId){
+		follow : function(site, userId){
 			var method = 'POST';
 			var insertURL = '/api/users/follow';
 			var formData = {
-				'siteId':siteId,
+				'site':site,
 				'userId':userId
 			};
 			var jdata = JSON.stringify(formData);
@@ -30,11 +30,11 @@ angular.module('webTntApp')
 				data: jdata,
 				headers:{'Content-Type':'application/json'}
 			}).then(function(response){
-				siteId = response.data.siteId;
+				site = response.data.site;
 				userId = response.data.userId;
 				return{
-					siteId : function(){
-						return siteId;
+					site : function(){
+						return site;
 					},
 					userId : function(){
 						return userId;

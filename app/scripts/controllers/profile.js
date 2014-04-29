@@ -31,21 +31,22 @@ angular.module('webTntApp')
 
 		$scope.user = profilePromise();
 		$scope.sites = sitePromise();
-
+		/*
 		$scope.getInfo = function(id){
 			Siteservice.getInfo(id)
 				.then(function(data){
-					console.log("data: " , data);
+					//console.log("data: " , data);
 					$scope.followedSites = data;
 				}, function(error){
 					$scope.site = 'failed';
 				});
 		};
-		
+		*/
 		//User wishes to follow site
 		
 		$scope.follow = function(site){
-			Profileservice.follow(site._id,user._id)
+			console.log(site);
+			Profileservice.follow(site,user._id)
 				.then(function(promise){
 					profilePromise();
 				});
