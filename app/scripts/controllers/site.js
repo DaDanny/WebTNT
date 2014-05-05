@@ -25,6 +25,7 @@ angular.module('webTntApp')
           .then(function(data){
             $scope.user = data;
             $scope.sites = sitePromise();
+            $scope.followedSites = data.followedSites;
           }, function(error){
             $scope.user = 'failed';
           });
@@ -35,11 +36,14 @@ angular.module('webTntApp')
           .then(function(data){
             $scope.sites = data;
             $scope.userId = user._id;
-            console.log('UserID: ', $scope.userId);
         });
       };
       $scope.user = profilePromise();
 
+      $scope.followedSitesAdded = function(){
+        console.log('in here');
+        return $scope.followedSites;
+      };
 
       $scope.createSite = function(){
           Siteservice.create($scope.siteURL, $scope.site)
@@ -85,4 +89,11 @@ angular.module('webTntApp')
               //$scope.userId = promise.userId();
             });
         };
+      $scope.allSites = function(){
+        return $scope.sites;
+      };
+      $scope.filterSites = function(item){
+        console.log(item);
+        return ($scope.followedSitesAdded().indexOf(item) ==-1)
+      };
     });

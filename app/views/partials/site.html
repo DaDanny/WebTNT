@@ -4,9 +4,14 @@
 <br>
 <p>This is the site view.</p>
 
+<h1>Your followed Sites</h1>
+  <div ng-repeat = "site in followedSites | filter:filterSites">
+    <h3>{{site.siteURL}}</h3>
+  </div>
+
 <div class="row marketing">
 	<h3>Sites of App:</h3>
-  <div ng-repeat="site in sites | orderBy:'followers':true">
+  <div ng-repeat="site in allSites() | filter:filterSites| orderBy:'followers':true ">
       <h5>Site: {{site.site}}</h5>
       <p>URL: {{site.siteURL}}</p>
       <p>Followers: {{site.followers}}</p>
@@ -16,6 +21,8 @@
       <br>
   </div>
 </div>
+
+
 
 <p>Submit a new Site</p>
 <form class="form-horizontal col-md-6" role="form" data-ng-submit="createSite()">

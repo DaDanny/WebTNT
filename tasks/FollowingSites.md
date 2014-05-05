@@ -16,10 +16,10 @@ In the future, figure out a way to reduce what we are saving. We will still have
 
 
 ## Sources
-http://stackoverflow.com/questions/6090212/is-there-any-way-to-atomically-update-two-collections-in-mongodb
+* http://stackoverflow.com/questions/6090212/is-there-any-way-to-atomically-update-two-collections-in-mongodb
 
-http://docs.mongodb.org/manual/tutorial/perform-two-phase-commits/
+* http://docs.mongodb.org/manual/tutorial/perform-two-phase-commits/
 
-http://docs.mongodb.org/manual/reference/operator/update/push/
+* http://docs.mongodb.org/manual/reference/operator/update/push/
 
 
