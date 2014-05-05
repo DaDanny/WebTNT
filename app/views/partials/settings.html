@@ -45,6 +45,7 @@
         <div class="modal-header">
             <h2>Sites</h2>
         </div>
+
         <div class="modal-body">
             <ul>
                 <li ng-repeat="item in items">
@@ -68,6 +69,14 @@
               
             </div>
         </div>
+        <br>
+      
+        <h1>Sites:</h1>
+    <p ng-repeat= "site in sites">{{site.site}}</p>
+     <h4>Custom templates for Site results</h4>
+    <pre>Model: {{siteSelected | json}}</pre>
+    <input type="text" ng-model="siteSelected" placeholder="Custom template" typeahead="site as site.site for site in sites | filter:{site:$viewValue} "  class="form-control">
+          
 
         <div class="modal-footer">
             <button class="btn btn-primary" ng-click="ok()">OK</button>

@@ -7,15 +7,13 @@ Instead of saving individual ID's for each site in an array, we are now saving e
 
 I do see an issue arising once we start to have tips being added to the Site Model. If we get a lot of tips, this might make it huge and if we are storing all this information, it might be a larger load each time. But I'm not sure. Will come back once we implement saving tips.
 
+Ok. This approach is actually a problem. Now if we have someone update a site, the site Object is stored and not updated. One example: If we store a site with 31 followers, then someone else follows it, we still have 31 followers stored. Maybe we do have to make the GET request each time to get the updated information.
 
-## Possible Solutions
-This process is an example of a transaction since we are going to be updating two collections simultaneously. A dirty approach (unsafe) would be to:
-	* Have a Siteservice function that update the site's followed number by one
-	* Have a userservice function that will update the user's followedSites array with the SiteID they wish to follow
-	* Have a siteservice function that will decrement the site's followed number by one
-	* Have a userservice function that will remove the Site's id from their followedSites array.
+Instead of completely abandoning what we already have which works. We can implement a feature that will pull new information from the FollowedSites so when we have new tips, we will get new tips for each site in the FollowedSites array. In the followed sites array, we are just going to store static information (url, name, id). 
 
-The issues with this approach is Mongo doesn't support triggers so we can't simply do one query (Site follow ftn) then do the next query (User follow function). This is an issue with concurrencent transactions that we will have to address.
+In the future, figure out a way to reduce what we are saving. We will still have a lot of information stored which won't be necessary if we are then using the ID's to pull fresh tips each time.
+
+
 
 ## Sources
 http://stackoverflow.com/questions/6090212/is-there-any-way-to-atomically-update-two-collections-in-mongodb

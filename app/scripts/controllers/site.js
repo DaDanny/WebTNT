@@ -20,16 +20,27 @@ angular.module('webTntApp')
   .controller('SiteCtrl',function ($scope, $http, $location, Siteservice,Auth, Profileservice) {
       var user = Auth.currentUser();
 
+      var profilePromise = function(){
+        Profileservice.get()
+          .then(function(data){
+            $scope.user = data;
+            $scope.sites = sitePromise();
+          }, function(error){
+            $scope.user = 'failed';
+          });
+      };
 
       var sitePromise = function(){
         Siteservice.get()
           .then(function(data){
             $scope.sites = data;
             $scope.userId = user._id;
+            console.log('UserID: ', $scope.userId);
         });
       };
-      
-      $scope.sites = sitePromise();
+      $scope.user = profilePromise();
+
+
       $scope.createSite = function(){
           Siteservice.create($scope.siteURL, $scope.site)
             .then(function(promise){
@@ -41,14 +52,14 @@ angular.module('webTntApp')
       $scope.follow = function(site){
           Siteservice.follow(site._id,$scope.userId)
             .then(function(promise){
-              $scope.siteId = promise.siteId();
-              $scope.userId = promise.userId();
+              //$scope.siteId = promise.siteId();
+              //$scope.userId = promise.userId();
               sitePromise();
             });
           Profileservice.follow(site,$scope.userId)
             .then(function(promise){
-              $scope.site = promise.site();
-              $scope.userId = promise.userId();
+              //$scope.site = promise.site();
+              //$scope.userId = promise.userId();
             });
         };
       $scope.unfollow = function(site){
@@ -58,9 +69,9 @@ angular.module('webTntApp')
             });
           Profileservice.unfollow(site._id,$scope.userId)
             .then(function(promise){
-              $scope.site = promise.site();
-              $scope.userId = promise.userId();
-            })
+              //$scope.siteId = promise.siteId();
+              //$scope.userId = promise.userId();
+            });
         };
 
       $scope.deleteSite = function(site){
@@ -70,8 +81,8 @@ angular.module('webTntApp')
               });
           Profileservice.unfollow(site._id, $scope.userId)
             .then(function(promise){
-              $scope.siteId = promise.siteId();
-              $scope.userId = promise.userId();
+              //$scope.siteId = promise.siteId();
+              //$scope.userId = promise.userId();
             });
         };
     });

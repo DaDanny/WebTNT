@@ -11,6 +11,9 @@ angular.module('webTntApp')
     },{
       'title':'Sites',
       'link': '/site'
+    },{
+      'title':'TypeheadTest',
+      'link':'/typehead'
     }
     ];
     

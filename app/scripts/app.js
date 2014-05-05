@@ -1,5 +1,4 @@
 'use strict';
-
 angular.module('webTntApp', [
   'ngCookies',
   'ngResource',
@@ -43,6 +42,10 @@ angular.module('webTntApp', [
         templateUrl: 'partials/site',
         controller: 'SiteCtrl',
         authenticate:true
+      })
+      .when('/typehead', {
+        templateUrl: 'partials/typehead',
+        controller: 'TypeheadCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -1,0 +1,51 @@
+<div ng-include="'partials/navbar.html'"></div>
+<p>This is the typeheads view.</p>
+<script type="text/ng-template" id="customTemplate.html">
+  <a>
+      <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+  </a>
+</script>
+<script type="text/ng-template" id="faviconTemplate.html">
+  <a>
+      <img ng-src="http://{{match.model.siteURL}}/favicon.ico" width="16">
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+  </a>
+</script>
+<div class='container-fluid' ng-controller="TypeheadCtrl">
+
+    <h4>Static arrays</h4>
+    <pre>Model: {{selected | json}}</pre>
+    <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+
+    <h4>Asynchronous results</h4>
+    <pre>Model: {{asyncSelected | json}}</pre>
+    <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+
+    <h4>Custom templates for results</h4>
+    <pre>Model: {{customSelected | json}}</pre>
+    <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+
+    <br>
+    <br>
+
+    <h1>Sites:</h1>
+    <p ng-repeat= "site in sites" >
+       <a>
+          <img ng-src="http://{{site.siteURL}}/favicon.ico" width="16">
+          <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+        </a>
+      {{site.site}}
+    </p>
+     <h4>Custom templates for Site results</h4>
+    <pre>Model: {{siteSelected | json}}</pre>
+    <input type="text" ng-model="siteSelected" placeholder="Custom template" typeahead="site as site.site for site in sites | filter:{site:$viewValue}" typeahead-template-url="faviconTemplate.html" class="form-control">
+
+    <br>
+    <h4>Asynchronous Site results</h4>
+    <pre>Model: {{asyncSelectedSite | json}}</pre>
+    <input type="text" ng-model="asyncSelectedSite" placeholder="Sites loaded via $http" typeahead="site for site in getSites()" typeahead-loading="loadingLocations" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    
+</div>

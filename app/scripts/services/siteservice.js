@@ -82,6 +82,7 @@ angular.module('webTntApp')
 			unfollow : function(id){
 				return $http.post('/api/sites/unfollow/'+id);
 			}
+			//Will Return to in order to get tips on each site
 			/*getInfo : function(id){
 				return $http.get('/api/sites/'+id)
 					.then(function(response){

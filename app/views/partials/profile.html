@@ -8,18 +8,18 @@
     <p>UserID: {{user._id}}</p>
     <p>UserName: {{user.name}}</p>
     <p>Email: {{user.email}}</p>
-    <p>FollowedSites: {{user.followedSites}}</p>
 </div>
 
 <div class = "row marketing">
-  <h2>Your Followed Sites</h2>
+  <h1>Your Followed Sites</h1>
   <div ng-repeat = "site in user.followedSites">
     <h3>SiteURL: {{site.siteURL}} </h3>
     <h4>Site: {{site.site}}</h4>
-    <h1>Site Tips: {{site.tips}}<h1>
+    <button type = "submit" class = "btn btn-danger" ng-click = "unfollow(site)">Unfollow Site</button>
   </div>
 </div>
 
+<!--
 <div class = "row marketing">
 	<h3>Sites</h3>
 	<div ng-repeat = "site in sites | 
@@ -29,3 +29,4 @@
     <button type = "submit" class = "btn btn-danger" ng-click = "unfollow(site)">Unfollow Site</button>
 	</div>
 </div>
+-->

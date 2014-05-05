@@ -31,7 +31,11 @@ angular.module('webTntApp')
 
 		$scope.user = profilePromise();
 		$scope.sites = sitePromise();
+
+
 		/*
+		** Will come back to get this working for getting
+		** Information about the tips for each SiteID
 		$scope.getInfo = function(id){
 			Siteservice.getInfo(id)
 				.then(function(data){
@@ -42,8 +46,9 @@ angular.module('webTntApp')
 				});
 		};
 		*/
+
+
 		//User wishes to follow site
-		
 		$scope.follow = function(site){
 			console.log(site);
 			Profileservice.follow(site,user._id)

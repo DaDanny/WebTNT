@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MyModal.controllers', [])
-  .controller('ModalCtrl', [ '$scope', '$modal', '$log', 'Siteservice', function ($scope, $modal, $log, Siteservice) {
+  .controller('ModalCtrl', [ '$scope', '$modal', '$log', function ($scope, $modal, $log) {
     $scope.items = ['item1', 'item2', 'item3'];
 
     $scope.open = function () {
