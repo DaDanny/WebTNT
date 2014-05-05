@@ -44,3 +44,16 @@ All these things and more lay within WebTNT, so what are you still waiting for, 
 
 * Featured Tip on Front Page
 * Submit questions or help tickets
+
+
+## Putting it all together
+
+Right now, I am able to have users login with email, They can add sites, follow sites and search for sites.
+
+Going forward, I need to start implementing filters for followedSites. Once we are able to filter the sites they are following, the next big thing to accomplish will be adding tips. This should be similar to adding Sites but I need to figure out a good way to add in Tips.
+
+I'm thinking of a separate collection of tips. When they add a tip, they also specify which site to add it to. When they add it, the sites Tips array gets this tip.id. When we want to show tips, we will iterate through all these ids, retriveing their respective documents from the collection.
+
+Once users are able to add tips, the next steps will be rigorous testing of all the features of the site, integrating Facebook, github, twitter and Gmail logins. Then making it look nice. I'm making a lot of progress with this website and should not discount any of it. I've learned a ton during the entire process and while I still have a lot to do, I am making small progress every day.
+
+I aim to have a soft launch by June 1st. This is very obtainable. I really need to get on filtering sites, adding tips and then logging in users.
